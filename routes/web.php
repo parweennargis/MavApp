@@ -34,6 +34,9 @@ Route::group(['prefix' => 'admin/'], function () {
     // Question Section
     Route::get('view/questions', 'Question\QuestionController@getQuestions');
     Route::get('add/questions', 'Question\QuestionController@getQuestionForm');
+    Route::post('add/post-question', 'Question\QuestionController@postQuestionForm');
+    Route::get('edit/question/{id}', 'Question\QuestionController@getEditQuestion');
+    Route::post('edit/post-question', 'Question\QuestionController@postEditQuestion');
 });
 
 

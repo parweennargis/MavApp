@@ -26,7 +26,7 @@
                         <td>{{ $question->name }}</td>
                         <td>{{ $question->question }}</td>
                         <td>{{ $question->status }}</td>
-                        <td><a href="{{ url('/admin/edit/question') }}">Edit</a></td>
+                        <td><a href="{{ url("/admin/edit/question/$question->id") }}">Edit</a></td>
                     </tr>
                     <?php $i++; ?>
                     @endforeach

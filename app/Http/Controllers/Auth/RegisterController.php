@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Http\Model\User;
 
 class RegisterController extends Controller
 {
@@ -27,6 +27,11 @@ class RegisterController extends Controller
         $this->userModel = $user;
     }
     
+    /**
+     * Post Registration
+     * 
+     * @return JSON
+     */
     protected function postRegistration()
     {
         $input = request()->all();
@@ -77,6 +82,12 @@ class RegisterController extends Controller
         return Validator::make($vdata, $rules, $validationMessage);
     }
     
+    /**
+     * Create User
+     * 
+     * @param array $input
+     * @return boolean
+     */
     protected function createUser($input)
     {
         $data = [

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -40,6 +40,11 @@ class LoginController extends Controller
         
     }
     
+    /**
+     * Post Login
+     * 
+     * @return JSON
+     */
     protected function postLogin()
     {
         $input = request()->all();
@@ -52,7 +57,6 @@ class LoginController extends Controller
 
             return response()->json(['result' => false, 'msg' => $response]);
         }
-//        dd('n');
         $user = null;
         $isLoggedInUser = false;
         // check user is authentic or not
@@ -71,6 +75,12 @@ class LoginController extends Controller
         
     }
     
+    /**
+     * Validation Make
+     * 
+     * @param array $input
+     * @return boolean
+     */
     protected function validationMake($input)
     {
         $vdata = [
@@ -86,11 +96,21 @@ class LoginController extends Controller
         return Validator::make($vdata, $rules, $validationMessage);
     }
     
+    /**
+     * Get Redirect Url
+     * 
+     * @return string
+     */
     protected function getRedirectUrl()
     {
         return Auth::user()->is_member == '1' ? url('member') : url('admin/dashboard');
     }
     
+    /**
+     * Logout
+     * 
+     * @return boolean
+     */
     protected function logout()
     {
         Session::flush();

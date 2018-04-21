@@ -1,9 +1,6 @@
 @include('admin.layout')
 <div class="col-lg-12">
     <div class="card">
-        <div class="card-header">
-            <strong class="card-title">Add Questions</strong>
-        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -11,7 +8,7 @@
                         <!-- Credit Card -->
                         <div id="pay-invoice">
                             <div class="card-body">
-                                <form action="" role="form" method="POST" id="add_question">
+                                <form action="" role="form" method="POST" id="edit_question">
 
                                     <div style="display: none" id="msg-div">
                                         <div class="alert alert-danger" role="alert">
@@ -29,38 +26,41 @@
                                             <select name="category" id="category" class="form-control-sm form-control">
                                                 <option value="0">Please select</option>
                                                 @foreach($activeCategories as $activeCategory)
-                                                <option value="{{ $activeCategory->id }}">{{ $activeCategory->name }}</option>
+                                                <option value="{{ $activeCategory->id }}" 
+                                                        <?php if ($question['category_id'] == $activeCategory->id) echo 'selected' ?>>{{ $activeCategory->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
 
+                                    <input id="questionId" value="{{ $question['id'] }}" style="display: none">
+                                    
                                     <div class="form-group has-success">
                                         <label class="control-label mb-1">Question</label>
-                                        <textarea name="question" id="question" rows="3" placeholder="Content..." class="form-control"></textarea>
+                                        <textarea name="question" id="question" rows="3" placeholder="Content..." class="form-control">{{ $question['question'] }}</textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-1">Option1</label>
-                                        <textarea name="option1" id="option1" rows="2" placeholder="Option 1" class="form-control"></textarea>
+                                        <textarea name="option1" id="option1" rows="2" placeholder="Option 1" class="form-control">{{ $option1 }}</textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-1">Option2</label>
-                                        <textarea name="option2" id="option2" rows="2" placeholder="Option 2" class="form-control"></textarea>
+                                        <textarea name="option2" id="option2" rows="2" placeholder="Option 2" class="form-control">{{ $option2 }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label mb-1">Option3</label>
-                                        <textarea name="option3" id="option3" rows="2" placeholder="Option 3" class="form-control"></textarea>
+                                        <textarea name="option3" id="option3" rows="2" placeholder="Option 3" class="form-control">{{ $option3 }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label mb-1">Option4</label>
-                                        <textarea name="option4" id="option4" rows="2" placeholder="Option 4" class="form-control"></textarea>
+                                        <textarea name="option4" id="option4" rows="2" placeholder="Option 4" class="form-control">{{ $option4 }}</textarea>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label class="control-label mb-1">Hint</label>
-                                        <textarea name="hint" id="hint" rows="2" placeholder="Hint..." class="form-control"></textarea>
+                                        <textarea name="hint" id="hint" rows="2" placeholder="Hint..." class="form-control">{{ $question['hint'] }}</textarea>
                                     </div>
 
                                     <div>
@@ -83,16 +83,17 @@
 <script>
 var base_url = "{{ url('') }}";
 var token = "{{ csrf_token() }}";
-$(document).on("submit", "#add_question", function (e) {
+$(document).on("submit", "#edit_question", function (e) {
     e.preventDefault();
 
     $.ajax({
         method: "POST",
-        url: base_url + "/admin/add/post-question",
+        url: base_url + "/admin/edit/post-question",
         dataType: "json",
         data: {
             _token: token,
             category: $("#category").val(),
+            id: $("#questionId").val(),
             question: $("#question").val(),
             option1: $("#option1").val(),
             option2: $("#option2").val(),

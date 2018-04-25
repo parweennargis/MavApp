@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', 'Website\HomeController@getHome');
+
 Route::group(['prefix' => 'auth'], function () {
     Route::get('register', 'Auth\RegisterController@getRegistration');
     Route::post('create-user', 'Auth\RegisterController@postRegistration');

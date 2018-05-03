@@ -25,12 +25,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('logout', 'Auth\LoginController@logout');
 });
 
-Route::get('member', 'Dashboard\MemberDashboardController@index');
-Route::group(['prefix' => 'member'], function () {
-    
+Route::get('member', 'Dashboard\MemberDashboardController@index')->middleware('valid');
+Route::group(['prefix' => 'member','middleware'=>'valid'], function () {
+    //add all member routes here
 });
 
-Route::group(['prefix' => 'admin/'], function () {
+Route::group(['prefix' => 'admin/', 'middleware'=>'valid'], function () {
     Route::get('home', 'Dashboard\AdminDashboardController@index');
     
     // Question Section

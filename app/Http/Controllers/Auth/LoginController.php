@@ -6,7 +6,6 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -21,7 +20,6 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -38,6 +36,11 @@ class LoginController extends Controller
     public function __construct()
     {
         
+    }
+    
+    public function getLogin()
+    {
+        return view('auth.login');
     }
     
     /**

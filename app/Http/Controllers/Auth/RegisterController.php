@@ -6,11 +6,9 @@ use App\Http\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
@@ -25,6 +23,11 @@ class RegisterController extends Controller
     public function __construct(User $user)
     {
         $this->userModel = $user;
+    }
+    
+    public function getRegistration()
+    {
+        return view('auth.register');
     }
     
     /**

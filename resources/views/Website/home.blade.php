@@ -857,8 +857,6 @@
         </div>
     </section>
 </div>
-
-<div id="map" class="map-height"></div>
 </div>
 
 <footer class="footer footer-fixed">

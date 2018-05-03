@@ -36,6 +36,12 @@
         <li>
             <a href="#contact">Contact</a>
         </li>
+        <li>
+            <a href="{{ url('/auth/login') }}">Login</a>
+        </li>
+        <li>
+            <a href="{{ url('/auth/register') }}">Sign Up</a>
+        </li>
 
     </ul>
 </div>

@@ -819,33 +819,36 @@
                         <div class="row">
                             <div class=" col-md-6">
                                 <div class="form-group ">
-                                    <input type="text" id="name" class="form-control" placeholder="Name"
-                                           required data-error="Please enter your name">
-
-                                    <div class="help-block with-errors"></div>
+                                    <input type="text" id="name" class="form-control" placeholder="Name" required>
+                                    <div id="name_msg"></div>
                                 </div>
                             </div>
 
                             <div class=" col-md-6">
                                 <div class="form-group ">
-                                    <input type="email" class="email form-control" id="email"
-                                           placeholder="Email" required
-                                           data-error="Please enter your email">
-
-                                    <div class="help-block with-errors"></div>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                    <div id="email_msg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col-md-6">
+                                <div class="form-group ">
+                                    <input type="phone" class="form-control" id="phone" placeholder="Phone Number" required>
+                                    <div id="phone_msg"></div>
+                                </div>
+                            </div>
+                            <div class=" col-md-6">
+                                <div class="form-group ">
+                                    <input type="email" class="form-control" id="subject" placeholder="Subject">
+                                    <div id="subject_msg"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="controls">
-                                <input type="text" id="msg_subject" class="form-control" placeholder="Subject" required data-error="Please enter your message subject">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="controls">
-                                <textarea id="message" rows="7" placeholder="Massage" class="form-control" required data-error="Write your message"></textarea>
-                                <div class="help-block with-errors"></div>
+                                <textarea id="message" rows="7" placeholder="Message" class="form-control"></textarea>
+                                <div class="message_msg"></div>
                             </div>
                         </div>
 

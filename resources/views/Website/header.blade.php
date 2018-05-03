@@ -24,7 +24,7 @@
         <li>
             <a href="#fun">Fun</a>
         </li>
-        <li class="dropdown dropdown-slide">
+<!--        <li class="dropdown dropdown-slide">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="true">Blog <span class="fa fa-angle-down"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="blog-list-right-sidebar.html">Blog list - Right Sidebar</a></li>
@@ -32,7 +32,7 @@
                 <li><a href="blog-single-right-sidebar.html">Blog Details - Right Sidebar</a></li>
                 <li><a href="blog-single-left-sidebar.html">Blog Details - Left Sidebar</a></li>
             </ul>
-        </li>
+        </li>-->
         <li>
             <a href="#contact">Contact</a>
         </li>

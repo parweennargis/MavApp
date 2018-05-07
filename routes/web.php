@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'Website\HomeController@getHome');
+Route::get('test', 'Dashboard\MemberDashboardController@index');
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('register', 'Auth\RegisterController@getRegistration');
@@ -30,7 +31,8 @@ Route::group(['prefix' => 'member','middleware'=>'valid'], function () {
     //add all member routes here
 });
 
-Route::group(['prefix' => 'admin/', 'middleware'=>'valid'], function () {
+//Route::group(['prefix' => 'admin/', 'middleware'=>'valid'], function () {
+Route::group(['prefix' => 'admin/'], function () {
     Route::get('home', 'Dashboard\AdminDashboardController@index');
     
     // Question Section
@@ -39,6 +41,13 @@ Route::group(['prefix' => 'admin/', 'middleware'=>'valid'], function () {
     Route::post('add/post-question', 'Question\QuestionController@postQuestionForm');
     Route::get('edit/question/{id}', 'Question\QuestionController@getEditQuestion');
     Route::post('edit/post-question', 'Question\QuestionController@postEditQuestion');
+    
+    // Users Section
+    Route::get('view/users', 'User\UsersController@getUsers');
+    
+    // Category Section
+    Route::get('view/category', 'Category\CategoryController@getCategories');
+    Route::get('add/category', 'Category\CategoryController@getCategoryForm');
 });
 
 

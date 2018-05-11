@@ -55,5 +55,12 @@ class QuestionOption extends Model
         }
         return true;
     }
+    
+    public function getOptionByQuestionId($questionId)
+    {
+        return $this->select('id', 'option')
+                    ->where(['question_id' => $questionId, 'status' => 1])
+                    ->get();
+    }
             
 }

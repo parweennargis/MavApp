@@ -34,7 +34,7 @@
                                     </div>
 
                                     <input id="questionId" value="{{ $question['id'] }}" style="display: none">
-                                    
+
                                     <div class="form-group has-success">
                                         <label class="control-label mb-1">Question</label>
                                         <textarea name="question" id="question" rows="3" placeholder="Content..." class="form-control">{{ $question['question'] }}</textarea>
@@ -57,7 +57,7 @@
                                         <label class="control-label mb-1">Option4</label>
                                         <textarea name="option4" id="option4" rows="2" placeholder="Option 4" class="form-control">{{ $option4 }}</textarea>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="control-label mb-1">Hint</label>
                                         <textarea name="hint" id="hint" rows="2" placeholder="Hint..." class="form-control">{{ $question['hint'] }}</textarea>
@@ -103,9 +103,9 @@ $(document).on("submit", "#edit_question", function (e) {
         },
         success: function (res) {
             if (res.result) {
-                    window.location.href = res.intended;
+                window.location.href = res.intended;
             } else {
-//                    display error here
+//              display error here
                 $("#msg-div").show();
                 $("#alert-msg").text("All fields are required fields");
             }

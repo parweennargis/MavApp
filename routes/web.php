@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'Website\HomeController@getHome');
+
+// test route. Need to move all route inside member function route
 Route::get('test', 'Dashboard\MemberDashboardController@index');
+Route::get('member/question/summary/{categoryName}', 'Question\QuestionMemberController@questionSummary');
+Route::get('member/question/{categoryName}', 'Question\QuestionMemberController@viewQuestions');
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('register', 'Auth\RegisterController@getRegistration');

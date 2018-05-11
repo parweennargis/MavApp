@@ -227,4 +227,5 @@
         </div>
         <div class="page-container">
             @include("member.leftside")
+            <div class="page-content">
         

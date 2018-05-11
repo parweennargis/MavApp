@@ -67,5 +67,19 @@ class Question extends Model
         $data->status = $status;
         return $data->save();
     }
+    
+    public function getCountByCategoryId($categoryId)
+    {
+        return $this->where('category_id', $categoryId)->count();
+    }
+    
+    public function getQuestionsBycategoryId($categoryId, $stepId)
+    {
+        return $this->where('category_id', $categoryId)
+                    ->orderBy('id', 'desc')
+                    ->limit(2)
+                    ->offset($stepId)
+                    ->first();
+    }
 
 }

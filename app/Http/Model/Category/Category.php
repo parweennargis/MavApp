@@ -17,4 +17,16 @@ class Category extends Model
                     ->get();
     }
     
+    public function getAllActiveCategoryWithQuestions()
+    {
+        return $this->select('id', 'name', 'icon', 'color')
+                    ->where(['status' => 1])
+                    ->get();
+    }
+    
+    public function getCategoryByName($categoryName)
+    {
+        return $this->where('name', $categoryName)->first();
+    }
+    
 }

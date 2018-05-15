@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -228,4 +228,8 @@
         <div class="page-container">
             @include("member.leftside")
             <div class="page-content">
-        
+                <div class="page-header">
+                    <div class="page-title">
+                        <h3>Questions <small>Welcome Eugene. 12 hours since last visit</small></h3>
+                    </div>
+                </div>

@@ -13,8 +13,8 @@ class Question extends Model
      */
     public function getAllQuestions()
     {
-        return $this->select('questions.id', 'categories.name', 'question', 'questions.status')
-                ->leftjoin('categories', 'questions.category_id', '=', 'categories.id')
+        return $this->select('questions.id', 'sub_categories.name', 'question', 'questions.status')
+                ->leftjoin('sub_categories', 'questions.sub_category_id', '=', 'sub_categories.id')
                 ->get();
     }
     
@@ -30,7 +30,7 @@ class Question extends Model
     public function saveData($categoryId, $question, $hint, $status)
     {
         return $this->insertGetId([
-                    'category_id' => $categoryId,
+                    'sub_category_id' => $categoryId,
                     'question' => $question,
                     'hint' => $hint,
                     'status' => $status
@@ -61,7 +61,7 @@ class Question extends Model
     public function updateData($questionId, $categoryId, $question, $hint, $status)
     {
         $data = $this->getQuestionById($questionId);
-        $data->category_id = $categoryId;
+        $data->sub_category_id = $categoryId;
         $data->question = $question;
         $data->hint = $hint;
         $data->status = $status;
@@ -75,7 +75,7 @@ class Question extends Model
     
     public function getQuestionsBycategoryId($categoryId, $stepId)
     {
-        return $this->where('category_id', $categoryId)
+        return $this->where('sub_category_id', $categoryId)
                     ->orderBy('id', 'desc')
                     ->limit(2)
                     ->offset($stepId)

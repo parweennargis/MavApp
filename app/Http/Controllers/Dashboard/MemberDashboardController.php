@@ -24,6 +24,7 @@ class MemberDashboardController extends Controller
     public function index()
     {
         $categories = $this->category->getAllActiveCategoryWithQuestions();
+        
         return view('dashboard.member-dashboard', compact('categories'));
     }
 }

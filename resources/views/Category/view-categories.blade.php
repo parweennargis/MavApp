@@ -23,7 +23,7 @@
                     <tr>
                         <th scope="row">{{ $i }}</th>
                         <td>{{ $category->name }}</td>
-                        <td>{{ $category->status }}</td>
+                        <td>{{ $category->status == 1 ? "Active" : "Inactive" }}</td>
                         <td><a href="{{ url("/admin/edit/category/$category->id") }}">Edit</a></td>
                     </tr>
                     <?php $i++; ?>

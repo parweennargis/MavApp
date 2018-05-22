@@ -57,12 +57,20 @@
                                         <label class="control-label mb-1">Option4</label>
                                         <textarea name="option4" id="option4" rows="2" placeholder="Option 4" class="form-control"></textarea>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="control-label mb-1">Hint</label>
                                         <textarea name="hint" id="hint" rows="2" placeholder="Hint..." class="form-control"></textarea>
                                     </div>
-
+                                    
+                                    <div class="form-group" style="background-color: #bbcfe0">
+                                        <label class="control-label mb-1">Answer</label>
+                                        <input type="radio" value="1" name="answer"> Option 1
+                                        <input type="radio" value="2" name="answer"> Option 2
+                                        <input type="radio" value="3" name="answer"> Option 3
+                                        <input type="radio" value="4" name="answer"> Option 4
+                                    </div>
+                                    
                                     <div>
                                         <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                             <i class="fa fa-lock fa-lg"></i>&nbsp;
@@ -98,11 +106,12 @@ $(document).on("submit", "#add_question", function (e) {
             option2: $("#option2").val(),
             option3: $("#option3").val(),
             option4: $("#option4").val(),
-            hint: $("#hint").val(),
+            answer: $('input[name=answer]:checked').val(),
+            hint: $("#hint").val()
         },
         success: function (res) {
             if (res.result) {
-                    window.location.href = res.intended;
+                window.location.href = res.intended;
             } else {
 //                    display error here
                 $("#msg-div").show();

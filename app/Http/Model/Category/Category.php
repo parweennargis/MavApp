@@ -9,7 +9,7 @@ class Category extends Model
     /**
      * Get All Questions
      * 
-     * @return array
+     * @return <array>
      */
     public function getAllCategories()
     {
@@ -19,14 +19,27 @@ class Category extends Model
     
     public function getAllActiveCategoryWithQuestions()
     {
-        return $this->select('id', 'name', 'icon', 'color')
+        return $this->select('id', 'name')
                     ->where(['status' => 1])
                     ->get();
     }
     
     public function getCategoryByName($categoryName)
     {
-        return $this->where('name', $categoryName)->first();
+        return $this->where('name', $categoryName)
+                    ->first();
+    }
+    
+    public function saveCategory($name, $status)
+    {
+        $this->name = $name;
+        $this->status = $status;
+        return $this->save();
+    }
+    
+    public function getDataByCategoryId($categoryId)
+    {
+        return $this->find($categoryId);
     }
     
 }

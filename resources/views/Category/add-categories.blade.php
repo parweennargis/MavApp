@@ -66,14 +66,13 @@ $(document).on("submit", "#add_category", function (e) {
         data: {
             _token: token,
             category: $("#name").val(),
-            question: $("#status").val()
+            status: $("#status").val()
         },
         success: function (res) {
-            console.log(res);
             if (res.result) {
                 window.location.href = res.intended;
             } else {
-//                    display error here
+//              display error here
                 $("#msg-div").show();
                 $("#alert-msg").text("All fields are required fields");
             }

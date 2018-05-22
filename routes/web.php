@@ -20,7 +20,7 @@ Route::get('/', 'Website\HomeController@getHome');
 // test route. Need to move all route inside member function route
 Route::get('test', 'Dashboard\MemberDashboardController@index');
 Route::get('member/question/summary/{categoryName}', 'Question\QuestionMemberController@questionSummary');
-Route::get('member/question/{categoryName}', 'Question\QuestionMemberController@viewQuestions');
+Route::get('member/question/{categoryId}', 'Question\QuestionMemberController@viewQuestions');
 Route::any('member/add/post-question', 'Question\QuestionMemberController@postQuestionForm');
 
 Route::group(['prefix' => 'auth'], function () {
@@ -53,6 +53,8 @@ Route::group(['prefix' => 'admin/'], function () {
     // Category Section
     Route::get('view/category', 'Category\CategoryController@getCategories');
     Route::get('add/category', 'Category\CategoryController@getCategoryForm');
+    Route::post('add/post-category', 'Category\CategoryController@postCategoryForm');
+    Route::get('edit/category/{id}', 'Category\CategoryController@getEditCategory');
 });
 
 

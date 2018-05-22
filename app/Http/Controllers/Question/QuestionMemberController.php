@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Question;
 
+use Session;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Category\Category;
 use App\Http\Model\Question\Question;
+use App\Http\Model\Category\SubCategory;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Model\Question\QuestionOption;
 use App\Http\Model\Users\UserQuestionAnswer;
@@ -16,10 +18,11 @@ class QuestionMemberController extends Controller {
      *
      * @return void
      */
-    public function __construct(Category $category, Question $question, QuestionOption $questionOption, UserQuestionAnswer $userQuestionAnswer)
+    public function __construct(Category $category, Question $question, QuestionOption $questionOption, UserQuestionAnswer $userQuestionAnswer, SubCategory $subCategory)
     {
         $this->category = $category;
         $this->question = $question;
+        $this->subCategory = $subCategory;
         $this->questionOption = $questionOption;
         $this->userQuestionAnswer = $userQuestionAnswer;
     }
@@ -27,19 +30,24 @@ class QuestionMemberController extends Controller {
     public function questionSummary($categoryName)
     {
         $categorydata = $this->category->getCategoryByName($categoryName);
-        $questionCount = $this->question->getCountByCategoryId($categorydata['id']);
         
-        return view('question.member-summary', compact('categorydata', 'questionCount'));
+        $categories = $this->subCategory->getCountByCategoryId($categorydata['id']);
+        
+        return view('question.member-summary', compact('categorydata', 'categories'));
     }
     
-    public function viewQuestions($categoryName)
+    public function viewQuestions($subCategoryId)
     {
-        $categorydata = $this->category->getCategoryByName($categoryName);
-        $stepId = 1-1;
-        $question = $this->question->getQuestionsBycategoryId($categorydata['id'], $stepId);
-        $questionOptions = $this->questionOption->getOptionByQuestionId($question['id']);
+        $categorydata = $this->subCategory->getDataByCategoryId($subCategoryId);
+        $stepId = 0;
+        Session(['step_number' => $stepId]);
         
-        return view('question.member-questions-view', compact('categorydata', 'question', 'questionOptions'));
+        $question = $this->question->getQuestionsBycategoryId($categorydata['id'], $stepId);
+        
+        $questionOptions = $this->questionOption->getOptionByQuestionId($question['id']);
+        $memberStepId = $stepId + 1;
+        
+        return view('question.member-questions-view', compact('categorydata', 'question', 'questionOptions', 'memberStepId'));
     }
     
     public function postQuestionForm()
@@ -60,13 +68,18 @@ class QuestionMemberController extends Controller {
         
         
         $categoryId = $input['categoryId'];
+        $stepnumber = Session::get('step_number');
+        $newStep = $stepnumber+1;
+        Session(['step_number' => $newStep]);
         
-        $stepId = 1-1;
-        $question = $this->question->getQuestionsBycategoryId($categoryId, $stepId);
-        $questionOptions = $this->questionOption->getOptionByQuestionId($question['id']);
+        $question = $this->question->getQuestionsBycategoryId($categoryId, $newStep);
+        if ($question) {
+            $questionOptions = $this->questionOption->getOptionByQuestionId($question['id']);
+            return response()->json(['result' => true, 'next' => true, 'msg' => ['question' => $question['question'], 'questionOptions' => $questionOptions]]);
+        }
         
+        return response()->json(['result' => true, 'next' => true, 'msg' => '']);
         
-        return response()->json(['result' => true, 'msg' => ['question' => $question['question'], 'questionOptions' => $questionOptions]]);
     }
     
     /**
@@ -85,7 +98,7 @@ class QuestionMemberController extends Controller {
         
         $rules = [
             'questionId' => 'required|exists:questions,id',
-            'categoryId' => 'required|exists:categories,id',
+            'categoryId' => 'required|exists:sub_categories,id',
             'option' => 'required|exists:question_options,id'
         ];
         $validationMessage = [];

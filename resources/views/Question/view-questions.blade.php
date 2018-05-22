@@ -25,7 +25,7 @@
                         <th scope="row">{{ $i }}</th>
                         <td>{{ $question->name }}</td>
                         <td>{{ $question->question }}</td>
-                        <td>{{ $question->status }}</td>
+                        <td>{{ $question->status == '1' ? "Active" : "Inactive" }}</td>
                         <td><a href="{{ url("/admin/edit/question/$question->id") }}">Edit</a></td>
                     </tr>
                     <?php $i++; ?>

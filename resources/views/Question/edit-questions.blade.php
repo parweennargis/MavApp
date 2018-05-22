@@ -25,9 +25,9 @@
                                         <div>
                                             <select name="category" id="category" class="form-control-sm form-control">
                                                 <option value="0">Please select</option>
-                                                @foreach($activeCategories as $activeCategory)
-                                                <option value="{{ $activeCategory->id }}" 
-                                                        <?php if ($question['category_id'] == $activeCategory->id) echo 'selected' ?>>{{ $activeCategory->name }}</option>
+                                                @foreach($categories as $category)
+                                                <option value="{{ $category->id }}" 
+                                                        <?php if ($question['sub_category_id'] == $category->id) echo 'selected' ?>>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -61,6 +61,14 @@
                                     <div class="form-group">
                                         <label class="control-label mb-1">Hint</label>
                                         <textarea name="hint" id="hint" rows="2" placeholder="Hint..." class="form-control">{{ $question['hint'] }}</textarea>
+                                    </div>
+                                    
+                                    <div class="form-group" style="background-color: #bbcfe0">
+                                        <label class="control-label mb-1">Answer</label>
+                                        <input type="radio" value="1" <?php if ($answerId == 1) echo 'checked' ?> name="answer"> Option 1
+                                        <input type="radio" value="2" <?php if ($answerId == 2) echo 'checked' ?> name="answer"> Option 2
+                                        <input type="radio" value="3" <?php if ($answerId == 3) echo 'checked' ?> name="answer"> Option 3
+                                        <input type="radio" value="4" <?php if ($answerId == 4) echo 'checked' ?> name="answer"> Option 4
                                     </div>
 
                                     <div>
@@ -99,7 +107,8 @@ $(document).on("submit", "#edit_question", function (e) {
             option2: $("#option2").val(),
             option3: $("#option3").val(),
             option4: $("#option4").val(),
-            hint: $("#hint").val(),
+            answer: $('input[name=answer]:checked').val(),
+            hint: $("#hint").val()
         },
         success: function (res) {
             if (res.result) {

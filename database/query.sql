@@ -28,10 +28,30 @@ CREATE TABLE `question_options` (
 
 CREATE TABLE `questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) DEFAULT NULL,
+  `sub_category_id` int(11) DEFAULT NULL,
   `question` varchar(300) DEFAULT NULL,
   `hint` varchar(255) DEFAULT NULL,
   `status` tinyint(2) DEFAULT '1',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `sub_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `user_question_answers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  `option_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -51,12 +71,3 @@ CREATE TABLE `users` (
   `provider_id` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `myapp`.`user_question_answers` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `user_id` INT(11) NULL,
-  `question_id` INT(11) NULL,
-  `option_id` INT(11) NULL,
-  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`));

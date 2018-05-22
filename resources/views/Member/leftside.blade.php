@@ -34,7 +34,7 @@
         </div>
 
         <ul class="navigation">
-            <li class="active"><a href="index-2.html"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+            <li class="active"><a href="{{ url('/test') }}"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
 <!--            <li>
                 <a href="#"><span>Form components</span> <i class="icon-paragraph-justify2"></i></a>
                 <ul>

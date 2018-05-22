@@ -230,6 +230,6 @@
             <div class="page-content">
                 <div class="page-header">
                     <div class="page-title">
-                        <h3>Questions <small>Welcome Eugene. 12 hours since last visit</small></h3>
+                        <h3><small>Welcome <b>Eugene</b>. 12 hours since last visit</small></h3>
                     </div>
                 </div>

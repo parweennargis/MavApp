@@ -10,6 +10,7 @@
         <link href="{{ URL::asset('member/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ URL::asset('member/css/londinium-theme.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ URL::asset('member/css/styles.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ URL::asset('member/css/custom.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ URL::asset('member/css/icons.css') }}" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
 
@@ -46,6 +47,7 @@
 
         <script type="text/javascript" src="{{ URL::asset('member/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::asset('member/js/application.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::asset('member/js/jquery.countdownTimer.js') }}"></script>
 
     </head>
 

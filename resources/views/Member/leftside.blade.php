@@ -34,7 +34,12 @@
         </div>
 
         <ul class="navigation">
+            
+            <li class=""><a href="{{ url('/test') }}"><span>Profile</span> <i class="icon-man"></i></a></li>
             <li class="active"><a href="{{ url('/test') }}"><span>Dashboard</span> <i class="icon-screen2"></i></a></li>
+            <li class=""><a href="icons.html">Total Test <span class="label label-danger">850+</span></a></li>
+            <li class=""><a href="icons.html">Total Rank</a></li>
+            <li class=""><a href="{{ url('/auth/logout') }}"><span>Logout</span> <i class="icon-exit"></i></a></li>
 <!--            <li>
                 <a href="#"><span>Form components</span> <i class="icon-paragraph-justify2"></i></a>
                 <ul>

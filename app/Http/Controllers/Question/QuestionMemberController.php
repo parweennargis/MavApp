@@ -75,10 +75,10 @@ class QuestionMemberController extends Controller {
         $question = $this->question->getQuestionsBycategoryId($categoryId, $newStep);
         if ($question) {
             $questionOptions = $this->questionOption->getOptionByQuestionId($question['id']);
-            return response()->json(['result' => true, 'next' => true, 'msg' => ['question' => $question['question'], 'questionOptions' => $questionOptions]]);
+            return response()->json(['result' => true, 'next' => true, 'msg' => ['question' => $question['question'], 'questionOptions' => $questionOptions, 'stepId' => $newStep+1]]);
         }
         
-        return response()->json(['result' => true, 'next' => true, 'msg' => '']);
+        return response()->json(['result' => true, 'next' => false, 'msg' => '']);
         
     }
     

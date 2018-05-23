@@ -21,13 +21,26 @@
 
     </div>
     <div class="col-md-4">
-        <a href="#">1. All Category</a>
-        <hr>
-        <a href="#">2. Engineering</a>
-        <hr>
-        <a href="#">3. Aptitude</a>
-        <hr>
-        <a href="#">4. Reasoning</a>
+        <div class="instruction-main-div">
+            <h4>Instructions</h4>
+            <ul>
+                <li>
+                    Time alloted: 30 mins
+                </li>
+                <li>
+                    Each question carry 1 mark, no negative marks.
+                </li>
+                <li>
+                    Click the 'Submit Test' button given in the bottom of this page to Submit your answers.
+                </li>
+                <li>
+                    Test will be submitted automatically if the time expired.
+                </li>
+                <li>
+                    Don't refresh the page.
+                </li>
+            </ul>
+        </div>
     </div>
 
 </div>
